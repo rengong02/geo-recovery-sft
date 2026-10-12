@@ -1,0 +1,80 @@
+"""Sub-agent spawning (inspired by Claude Code's AgentTool, 1397 lines).
+
+The idea: for complex sub-tasks, spawn an independent agent with its own
+conversation history and tool access. This lets the main agent delegate
+work like "go research this codebase and report back" without polluting
+its own context window.
+
+The sub-agent runs to completion and returns a text summary.
+"""
+
+from typing import ClassVar
+
+from ..limits import LimitExceeded
+from .base import Tool
+
+
+class AgentTool(Tool):
+    name = "agent"
+    description = (
+        "Spawn a sub-agent to handle a complex sub-task independently. "
+        "The sub-agent has its own context and tool access. Use this for: "
+        "researching a codebase, implementing a multi-step change in isolation, "
+        "or any task that would benefit from a fresh context window."
+    )
+    parameters: ClassVar[dict] = {
+        "type": "object",
+        "properties": {
+            "task": {
+                "type": "string",
+                "description": "What the sub-agent should accomplish",
+            },
+        },
+        "required": ["task"],
+    }
+
+    # set by Agent.__init__ after construction
+    _parent_agent = None
+
+    def execute(self, task: str) -> str:
+        if self._parent_agent is None:
+            return "Error: agent tool not initialized (no parent agent)"
+
+        # import here to avoid circular dep
+        from ..agent import Agent
+
+        parent = self._parent_agent
+        sub = Agent(
+            llm=parent.llm,
+            tools=[t for t in parent.tools if t.name != "agent"],  # no recursive agents
+            max_context_tokens=parent.context.max_tokens,
+            max_rounds=20,
+            # the sub-agent answers to the same consent layer and hooks as the parent
+            permission=parent.permission,
+            hooks=parent.hooks,
+        )
+
+        # a sub-agent failure comes back as text, never propagates into the parent
+        # sub-agents share this thread's tracked cwd; restore it on return so a
+        # sub-agent's own cd never leaks into the parent's shell state
+        from .bash import get_tracked_cwd, set_tracked_cwd
+
+        parent_cwd = get_tracked_cwd()
+        try:
+            result = sub.chat(task)
+            # trim long results to avoid blowing up parent's context
+            if len(result) > 5000:
+                result = result[:4500] + "\n... (sub-agent output truncated)"
+            return f"[Sub-agent completed]\n{result}"
+        except LimitExceeded as e:
+            # a budget stop is not a crash: say which limit tripped so the parent
+            # model can narrow the task instead of retrying it unchanged
+            return (
+                f"Sub-agent stopped early: {e}. "
+                "Its work is incomplete; try a smaller task."
+            )
+        except Exception as e:  # noqa: BLE001
+            return f"Sub-agent error: {e}"
+        finally:
+            if get_tracked_cwd() != parent_cwd:
+                set_tracked_cwd(parent_cwd)

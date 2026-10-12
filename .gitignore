@@ -1,0 +1,102 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.env
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.corecoder_history
+.DS_Store
+.pytest_cache/
+.tmp/
+
+# --- this project's additions -------------------------------------------------
+# Secrets. `.env` is above; these are the other shapes a key arrives in on this
+# machine, and a track record that contains one is not fixable by a later commit.
+lab_ssh_key
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.ssh/
+
+# Model weights and server exports: large, licensed separately, and never the
+# thing a reader needs in order to check a number.
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+models/
+checkpoints/
+
+# A downloaded upstream checkout or handoff archive, not project source.
+*.zip
+
+# ...except the real-data snapshots. Those are not a checkout of something: they
+# are the two published tables the real-data line reads, and the server that runs
+# it has no network, so the snapshot has to travel with the candidate that uses
+# it. Redistributable (World Bank CC BY 4.0, Natural Earth public domain) with the
+# licence and hash recorded in `strata/train/real_data.py: SOURCES`.
+!evals/sources/*.zip
+
+# --- evidence ---------------------------------------------------------------
+# What a candidate *is* is its manifest and its four reports: they are small,
+# they carry the digests, and they are what a reader checks a number against.
+# What is excluded here is what those files already identify:
+#
+#   * the bundled trees under packages/ and task_bundles/ are full copies of
+#     this repository, so tracking them would store the same source N times and
+#     make every code change look like N changes;
+#   * samples.jsonl is the raw trajectory data and the one large artifact whose
+#     content identity is reproducible -- `samples_digest` ignores wall-clock
+#     `steps[].seconds` precisely so it can be rebuilt and compared;
+#   * the archives are regenerable by `scripts/package_*.py`.
+#
+# The r2 archive's byte hash is *not* reproducible (it embeds step timings), so
+# excluding it does mean the archive hash in a report cannot be re-derived from
+# the repository alone. `.tar.gz` is left in `.gitignore` on the measured
+# numbers: seven archives, ~2 MB total -- see the inventory doc for the call.
+evals/train/v2_completed_20261008/raw/extracted/
+*.tar.gz
+
+# Raw per-sample dumps: one row per sample, and the summary report sitting next
+# to each of them already carries every number a reader checks.
+#
+# `samples.jsonl` is deliberately NOT excluded here, and the reason is a
+# measured one: an earlier version of this file excluded it by filename, and
+# cloning the repository showed two tests in `tests/strata/test_shape_ood_task.py`
+# failing -- the suite loads a candidate bundle, so which candidate directories
+# are part of the project is decided by the code, not by a filename pattern.
+# The genuine duplicates are handled structurally above (bundled copies under
+# `packages/` and `task_bundles/`, and the extracted tree).
+evals/**/*.progress.jsonl
+evals/**/rescore_rows.jsonl
+evals/**/tool_replay.jsonl
+
+# Task logs. They record one machine's paths and one run's timing, and every
+# number they contain is already in the report next to them.
+evals/**/logs/
+evals/**/*.log
+
+# Review and completion dumps: the output of the audit process, not of the
+# project.
+
+# The addressable artifacts behind the evidence contract. Measured: 719 files,
+# 45 MB, but only 505 distinct contents -- one `load_geodata` output is stored
+# 23 times, once per ablation arm, and 20 MB is pure redundancy. Ablation arms
+# are meant to be compared, so storing each arm's copy of the same artifact
+# makes the tree mostly duplicates.
+evals/**/_evidence/
+
+# Local scratch: upstream's development directories, a build workspace and the
+# per-checkout virtualenv. None of them are project source.
+baselines/
+bcp/
+workspace/
+.github/

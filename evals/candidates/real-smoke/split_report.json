@@ -1,0 +1,44 @@
+{
+  "policy": "by_entity_pool",
+  "pool_to_split": {
+    "pool_a": "train",
+    "pool_b": "validation",
+    "pool_c": "test"
+  },
+  "pool_sizes": {
+    "pool_a": 56,
+    "pool_b": 56,
+    "pool_c": 55
+  },
+  "assignments": {
+    "f2:real_pool_a_000": "train",
+    "f2:real_pool_a_001": "train",
+    "f2:real_pool_a_002": "train",
+    "f2:real_pool_a_003": "train",
+    "f2:real_pool_a_004": "train",
+    "f2:real_pool_a_005": "train",
+    "f2:real_pool_b_000": "validation",
+    "f2:real_pool_b_001": "validation",
+    "f2:real_pool_b_002": "validation",
+    "f2:real_pool_b_003": "validation",
+    "f2:real_pool_b_004": "validation",
+    "f2:real_pool_b_005": "validation",
+    "f2:real_pool_c_000": "test",
+    "f2:real_pool_c_001": "test",
+    "f2:real_pool_c_002": "test",
+    "f2:real_pool_c_003": "test",
+    "f2:real_pool_c_004": "test",
+    "f2:real_pool_c_005": "test"
+  },
+  "split_counts": {
+    "train": 6,
+    "validation": 6,
+    "test": 6
+  },
+  "entity_pools_pairwise_disjoint": true,
+  "entities_used_per_split": {
+    "test": 42,
+    "train": 42,
+    "validation": 42
+  }
+}

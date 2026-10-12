@@ -1,0 +1,2664 @@
+{
+  "what": "F2 recovery paired ablation data built offline from real tool execution",
+  "not": "not a model run, not API-backed, not yet released as a training task",
+  "generator": "strata.train.shape_ood",
+  "generator_version": "synth/f2-shape-ood-recovery-v1",
+  "trajectory": "recovery",
+  "paired_baseline": {
+    "paired_baseline_bundle": "recovery-baseline",
+    "world_policy": "same_world_paired_ablation",
+    "changed_factor": "recovery_error_kind",
+    "baseline_samples": 144,
+    "shared_sample_ids": 144,
+    "identical_outside_changed_factor": true,
+    "initial_prompts_identical": true,
+    "changed_error_kinds": 144,
+    "divergent_samples": [],
+    "prompt_divergent_samples": [],
+    "problems": []
+  },
+  "failure_contract": "one of three realistic merge failures -- wrong_role (the other frame's key name), value_as_key (a real numeric column used as a key), missing_argument (the required geokey omitted) -- followed by the correct merge",
+  "recovery_error_kinds": [
+    "missing_argument",
+    "value_as_key",
+    "wrong_role"
+  ],
+  "kind_counts": {
+    "missing_argument": 48,
+    "value_as_key": 48,
+    "wrong_role": 48
+  },
+  "kind_counts_per_split": {
+    "train": {
+      "missing_argument": 16,
+      "value_as_key": 16,
+      "wrong_role": 16
+    },
+    "validation": {
+      "missing_argument": 16,
+      "value_as_key": 16,
+      "wrong_role": 16
+    },
+    "test": {
+      "missing_argument": 16,
+      "value_as_key": 16,
+      "wrong_role": 16
+    }
+  },
+  "failed_step_kind_alignment": "declared kind recomputed from the failed call's arguments",
+  "failed_step_observation_signatures": {
+    "missing_argument": [
+      "Error: TypeError: _merge() missing 1 required positional arg"
+    ],
+    "value_as_key": [
+      "Error: ValueError: You are trying to merge on str and float6"
+    ],
+    "wrong_role": [
+      "Error: KeyError: 'area_code'",
+      "Error: KeyError: 'region_code'"
+    ]
+  },
+  "samples_digest": "sha256:67a295a1bfb6f946d912ffb40fc6067f4ad4e0147a985b21c5dc7a0fa00cf0a6",
+  "samples": 144,
+  "gold_checked_ok": 144,
+  "v1_validate_ok": 144,
+  "fresh_validate_ok": 144,
+  "failed_step_counts": {
+    "1": 144
+  },
+  "recovered_ok": 144,
+  "report": [
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_000",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_000",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_001",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_001",
+      "ok": true,
+      "correct_fill_rate": 0.9333,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_002",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_002",
+      "ok": true,
+      "correct_fill_rate": 0.9412,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_003",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_003",
+      "ok": true,
+      "correct_fill_rate": 0.9474,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_004",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_004",
+      "ok": true,
+      "correct_fill_rate": 0.9524,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_005",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_005",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_006",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_006",
+      "ok": true,
+      "correct_fill_rate": 0.973,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_007",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_007",
+      "ok": true,
+      "correct_fill_rate": 0.9268,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_008",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_008",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_009",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_009",
+      "ok": true,
+      "correct_fill_rate": 0.9167,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_010",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_010",
+      "ok": true,
+      "correct_fill_rate": 0.95,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_011",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_011",
+      "ok": true,
+      "correct_fill_rate": 0.9677,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_012",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_012",
+      "ok": true,
+      "correct_fill_rate": 0.9143,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_013",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_013",
+      "ok": true,
+      "correct_fill_rate": 0.9744,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_014",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_014",
+      "ok": true,
+      "correct_fill_rate": 0.9667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_015",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_015",
+      "ok": true,
+      "correct_fill_rate": 0.9412,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_016",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_016",
+      "ok": true,
+      "correct_fill_rate": 0.9211,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_017",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_017",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_018",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_018",
+      "ok": true,
+      "correct_fill_rate": 0.9394,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_019",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_019",
+      "ok": true,
+      "correct_fill_rate": 0.9189,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_020",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_020",
+      "ok": true,
+      "correct_fill_rate": 0.9268,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_021",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_021",
+      "ok": true,
+      "correct_fill_rate": 0.9062,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_022",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_022",
+      "ok": true,
+      "correct_fill_rate": 0.9444,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__full_023",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__full_023",
+      "ok": true,
+      "correct_fill_rate": 0.95,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_000",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_000",
+      "ok": true,
+      "correct_fill_rate": 0.5652,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_001",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_001",
+      "ok": true,
+      "correct_fill_rate": 0.6346,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_002",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_002",
+      "ok": true,
+      "correct_fill_rate": 0.6379,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_003",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_003",
+      "ok": true,
+      "correct_fill_rate": 0.6222,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_004",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_004",
+      "ok": true,
+      "correct_fill_rate": 0.6078,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_005",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_005",
+      "ok": true,
+      "correct_fill_rate": 0.6316,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_006",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_006",
+      "ok": true,
+      "correct_fill_rate": 0.6508,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_007",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_007",
+      "ok": true,
+      "correct_fill_rate": 0.54,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_008",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_008",
+      "ok": true,
+      "correct_fill_rate": 0.6607,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_009",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_009",
+      "ok": true,
+      "correct_fill_rate": 0.629,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_010",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_010",
+      "ok": true,
+      "correct_fill_rate": 0.625,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_011",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_011",
+      "ok": true,
+      "correct_fill_rate": 0.6296,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_012",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_012",
+      "ok": true,
+      "correct_fill_rate": 0.6167,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_013",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_013",
+      "ok": true,
+      "correct_fill_rate": 0.6522,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_014",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_014",
+      "ok": true,
+      "correct_fill_rate": 0.6154,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_015",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_015",
+      "ok": true,
+      "correct_fill_rate": 0.6552,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_016",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_016",
+      "ok": true,
+      "correct_fill_rate": 0.6222,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_017",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_017",
+      "ok": true,
+      "correct_fill_rate": 0.6471,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_018",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_018",
+      "ok": true,
+      "correct_fill_rate": 0.6491,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_019",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_019",
+      "ok": true,
+      "correct_fill_rate": 0.619,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_020",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_020",
+      "ok": true,
+      "correct_fill_rate": 0.66,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_021",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_021",
+      "ok": true,
+      "correct_fill_rate": 0.6429,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_022",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_022",
+      "ok": true,
+      "correct_fill_rate": 0.6613,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_shared_root__partial_023",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_shared_root__partial_023",
+      "ok": true,
+      "correct_fill_rate": 0.6458,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_000",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_000",
+      "ok": true,
+      "correct_fill_rate": 0.9167,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_001",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_001",
+      "ok": true,
+      "correct_fill_rate": 0.95,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_002",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_002",
+      "ok": true,
+      "correct_fill_rate": 0.9677,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_003",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_003",
+      "ok": true,
+      "correct_fill_rate": 0.8857,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_004",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_004",
+      "ok": true,
+      "correct_fill_rate": 0.9744,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_005",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_005",
+      "ok": true,
+      "correct_fill_rate": 0.9667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_006",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_006",
+      "ok": true,
+      "correct_fill_rate": 0.9412,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_007",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_007",
+      "ok": true,
+      "correct_fill_rate": 0.8684,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_008",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_008",
+      "ok": true,
+      "correct_fill_rate": 0.9286,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_009",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_009",
+      "ok": true,
+      "correct_fill_rate": 0.9697,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_010",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_010",
+      "ok": true,
+      "correct_fill_rate": 0.9189,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_011",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_011",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_012",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_012",
+      "ok": true,
+      "correct_fill_rate": 0.9062,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_013",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_013",
+      "ok": true,
+      "correct_fill_rate": 0.9722,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_014",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_014",
+      "ok": true,
+      "correct_fill_rate": 0.9,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_015",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_015",
+      "ok": true,
+      "correct_fill_rate": 0.9032,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_016",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_016",
+      "ok": true,
+      "correct_fill_rate": 0.9714,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_017",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_017",
+      "ok": true,
+      "correct_fill_rate": 0.9487,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_018",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_018",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_019",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_019",
+      "ok": true,
+      "correct_fill_rate": 0.9706,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_020",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_020",
+      "ok": true,
+      "correct_fill_rate": 0.9474,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_021",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_021",
+      "ok": true,
+      "correct_fill_rate": 0.9762,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_022",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_022",
+      "ok": true,
+      "correct_fill_rate": 0.9091,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__full_023",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__full_023",
+      "ok": true,
+      "correct_fill_rate": 0.9189,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_000",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_000",
+      "ok": true,
+      "correct_fill_rate": 0.5806,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_001",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_001",
+      "ok": true,
+      "correct_fill_rate": 0.6458,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_002",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_002",
+      "ok": true,
+      "correct_fill_rate": 0.6111,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_003",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_003",
+      "ok": true,
+      "correct_fill_rate": 0.6667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_004",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_004",
+      "ok": true,
+      "correct_fill_rate": 0.6739,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_005",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_005",
+      "ok": true,
+      "correct_fill_rate": 0.6731,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_006",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_006",
+      "ok": true,
+      "correct_fill_rate": 0.6034,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_007",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_007",
+      "ok": true,
+      "correct_fill_rate": 0.6444,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_008",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_008",
+      "ok": true,
+      "correct_fill_rate": 0.6471,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_009",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_009",
+      "ok": true,
+      "correct_fill_rate": 0.6491,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_010",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_010",
+      "ok": true,
+      "correct_fill_rate": 0.6508,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_011",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_011",
+      "ok": true,
+      "correct_fill_rate": 0.66,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_012",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_012",
+      "ok": true,
+      "correct_fill_rate": 0.625,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_013",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_013",
+      "ok": true,
+      "correct_fill_rate": 0.5645,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_014",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_014",
+      "ok": true,
+      "correct_fill_rate": 0.6458,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_015",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_015",
+      "ok": true,
+      "correct_fill_rate": 0.6296,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_016",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_016",
+      "ok": true,
+      "correct_fill_rate": 0.6167,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_017",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_017",
+      "ok": true,
+      "correct_fill_rate": 0.6522,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_018",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_018",
+      "ok": true,
+      "correct_fill_rate": 0.5962,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_019",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_019",
+      "ok": true,
+      "correct_fill_rate": 0.6379,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_020",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_020",
+      "ok": true,
+      "correct_fill_rate": 0.6444,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_021",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_021",
+      "ok": true,
+      "correct_fill_rate": 0.6275,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_022",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_022",
+      "ok": true,
+      "correct_fill_rate": 0.6316,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_case_only__partial_023",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_case_only__partial_023",
+      "ok": true,
+      "correct_fill_rate": 0.6508,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_000",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_000",
+      "ok": true,
+      "correct_fill_rate": 0.9091,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_001",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_001",
+      "ok": true,
+      "correct_fill_rate": 0.9189,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_002",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_002",
+      "ok": true,
+      "correct_fill_rate": 0.9512,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_003",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_003",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_004",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_004",
+      "ok": true,
+      "correct_fill_rate": 0.8889,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_005",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_005",
+      "ok": true,
+      "correct_fill_rate": 0.95,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_006",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_006",
+      "ok": true,
+      "correct_fill_rate": 0.9677,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_007",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_007",
+      "ok": true,
+      "correct_fill_rate": 0.8857,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_008",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_008",
+      "ok": true,
+      "correct_fill_rate": 0.7949,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_009",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_009",
+      "ok": true,
+      "correct_fill_rate": 0.9667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_010",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_010",
+      "ok": true,
+      "correct_fill_rate": 0.8529,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_011",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_011",
+      "ok": true,
+      "correct_fill_rate": 0.9474,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_012",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_012",
+      "ok": true,
+      "correct_fill_rate": 0.9762,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_013",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_013",
+      "ok": true,
+      "correct_fill_rate": 0.9394,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_014",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_014",
+      "ok": true,
+      "correct_fill_rate": 0.973,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_015",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_015",
+      "ok": true,
+      "correct_fill_rate": 0.9512,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_016",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_016",
+      "ok": true,
+      "correct_fill_rate": 0.9062,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_017",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_017",
+      "ok": true,
+      "correct_fill_rate": 0.9167,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_018",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_018",
+      "ok": true,
+      "correct_fill_rate": 0.925,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_019",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_019",
+      "ok": true,
+      "correct_fill_rate": 0.9355,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_020",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_020",
+      "ok": true,
+      "correct_fill_rate": 0.8857,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_021",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_021",
+      "ok": true,
+      "correct_fill_rate": 0.9744,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_022",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_022",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__full_023",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__full_023",
+      "ok": true,
+      "correct_fill_rate": 1.0,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_000",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_000",
+      "ok": true,
+      "correct_fill_rate": 0.6667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_001",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_001",
+      "ok": true,
+      "correct_fill_rate": 0.6667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_002",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_002",
+      "ok": true,
+      "correct_fill_rate": 0.64,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_003",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_003",
+      "ok": true,
+      "correct_fill_rate": 0.6429,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_004",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_004",
+      "ok": true,
+      "correct_fill_rate": 0.629,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_005",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_005",
+      "ok": true,
+      "correct_fill_rate": 0.6667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_006",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_006",
+      "ok": true,
+      "correct_fill_rate": 0.6481,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_007",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_007",
+      "ok": true,
+      "correct_fill_rate": 0.6333,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_008",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_008",
+      "ok": true,
+      "correct_fill_rate": 0.6087,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_009",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_009",
+      "ok": true,
+      "correct_fill_rate": 0.6346,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_010",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_010",
+      "ok": true,
+      "correct_fill_rate": 0.6207,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_011",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_011",
+      "ok": true,
+      "correct_fill_rate": 0.6222,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_012",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_012",
+      "ok": true,
+      "correct_fill_rate": 0.6667,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_013",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_013",
+      "ok": true,
+      "correct_fill_rate": 0.6316,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_014",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_014",
+      "ok": true,
+      "correct_fill_rate": 0.6032,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_015",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_015",
+      "ok": true,
+      "correct_fill_rate": 0.66,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_016",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_016",
+      "ok": true,
+      "correct_fill_rate": 0.625,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_017",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_017",
+      "ok": true,
+      "correct_fill_rate": 0.6613,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_018",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_018",
+      "ok": true,
+      "correct_fill_rate": 0.6042,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_019",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_019",
+      "ok": true,
+      "correct_fill_rate": 0.6296,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_020",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_020",
+      "ok": true,
+      "correct_fill_rate": 0.5833,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_021",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "missing_argument",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_021",
+      "ok": true,
+      "correct_fill_rate": 0.6087,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_022",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "value_as_key",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_022",
+      "ok": true,
+      "correct_fill_rate": 0.6731,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    },
+    {
+      "sample_id": "f2:recovery_shape_ood_disjoint_root__partial_023",
+      "gold_ok": true,
+      "gold_problems": [],
+      "validate_ok": true,
+      "blockers": [],
+      "recovery_error_kind": "wrong_role",
+      "recovered": true,
+      "failed_steps": 1,
+      "case_id": "recovery_shape_ood_disjoint_root__partial_023",
+      "ok": true,
+      "correct_fill_rate": 0.6207,
+      "wrong_fill_rates": [
+        0.0,
+        0.0
+      ],
+      "problems": []
+    }
+  ]
+}

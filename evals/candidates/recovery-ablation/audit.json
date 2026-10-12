@@ -1,0 +1,75 @@
+{
+  "scope": "f2_recovery_candidate_only",
+  "candidate_revision": "r2",
+  "intended_use": "paired_error_kind_ablation_candidate",
+  "paired_baseline_bundle": "recovery-baseline",
+  "world_policy": "same_world_paired_ablation",
+  "changed_factor": "recovery_error_kind",
+  "paired_baseline": {
+    "paired_baseline_bundle": "recovery-baseline",
+    "world_policy": "same_world_paired_ablation",
+    "changed_factor": "recovery_error_kind",
+    "baseline_samples": 144,
+    "shared_sample_ids": 144,
+    "identical_outside_changed_factor": true,
+    "initial_prompts_identical": true,
+    "changed_error_kinds": 144,
+    "divergent_samples": [],
+    "prompt_divergent_samples": [],
+    "problems": []
+  },
+  "training_release": false,
+  "model_inference_or_training_runs": 0,
+  "api_calls": 0,
+  "samples": 144,
+  "unique_worlds": 144,
+  "gold_ok": 144,
+  "validator_ok": 144,
+  "fresh_validate_ok": 144,
+  "replayed_equal": 144,
+  "replay_tools_changed": 0,
+  "recovered_ok": 144,
+  "failed_step_counts": {
+    "1": 144
+  },
+  "kind_counts": {
+    "missing_argument": 48,
+    "value_as_key": 48,
+    "wrong_role": 48
+  },
+  "kind_counts_per_split": {
+    "train": {
+      "missing_argument": 16,
+      "value_as_key": 16,
+      "wrong_role": 16
+    },
+    "validation": {
+      "missing_argument": 16,
+      "value_as_key": 16,
+      "wrong_role": 16
+    },
+    "test": {
+      "missing_argument": 16,
+      "value_as_key": 16,
+      "wrong_role": 16
+    }
+  },
+  "failed_step_kind_mismatches": [],
+  "split_counts": {
+    "train": 48,
+    "validation": 48,
+    "test": 48
+  },
+  "training_ready": true,
+  "training_readiness_reasons": [],
+  "content_schema_crossings": [],
+  "sensitive_files_present": [],
+  "samples_digest": "sha256:67a295a1bfb6f946d912ffb40fc6067f4ad4e0147a985b21c5dc7a0fa00cf0a6",
+  "artifact_hashes": {
+    "samples.jsonl": "sha256:5655ea2fcb12688422b8a92cab6e46f259b03302632a1969f953d4c6569f417f",
+    "build_report.json": "sha256:30a90eb6ccf83332ab5ed11b7d1a2b4303f29bc95a3e44faf1f72b5b93c9a1d6",
+    "replay_report.json": "sha256:3210c26d5b9b93a06d07934b9495eed189ab77a708756efb892156e6b057dd32",
+    "split_report.json": "sha256:ca68df66cb30b5d57e00f8b4b323c7e7db41ef5fc65a1ee49be580708240cf05",
+    "manifest.json": "sha256:5916e712a49e48ecf68a3181b0bfebf3a34c96dd9c98e8c439c5db4bfb8f3387"
+  }
+}

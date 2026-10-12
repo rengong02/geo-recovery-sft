@@ -1,0 +1,22 @@
+{
+  "scope": "real_data_smoke_only",
+  "gpu_runs": 0,
+  "api_calls": 0,
+  "samples": 48,
+  "gold_ok": 48,
+  "validate_ok": 48,
+  "replayed_equal": 48,
+  "kind_counts": {
+    "missing_argument": 16,
+    "value_as_key": 16,
+    "wrong_role": 16
+  },
+  "split_counts": {
+    "train": 16,
+    "validation": 16,
+    "test": 16
+  },
+  "entity_pools_pairwise_disjoint": true,
+  "subset_row_ids_recorded": true,
+  "sensitive_files_present": []
+}

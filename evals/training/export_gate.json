@@ -1,0 +1,176 @@
+{
+  "source": "evals/reviews/head-tail/audited_candidates.jsonl",
+  "records": 18,
+  "gate_eligible": 0,
+  "claimed_eligible": 0,
+  "wrongly_claimed": [],
+  "verdicts": [
+    {
+      "record_id": "p2c:off:TASK_250309_135125_702855",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_476358",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_530802",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_526765",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_901809",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_596430",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_476053",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_918547",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:off:TASK_250309_135125_932053",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:planning_status=needs_review",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified",
+        "open_review_issues"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_702855",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_476358",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_530802",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_526765",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_901809",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_596430",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified",
+        "open_review_issues"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_476053",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=not_end_to_end_verified"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_918547",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=needs_review",
+        "open_review_issues"
+      ]
+    },
+    {
+      "record_id": "p2c:head_tail:TASK_250309_135125_932053",
+      "eligible": false,
+      "blockers": [
+        "incomplete_observations",
+        "reserved_eval_task",
+        "semantics_unreviewed:answer_status=selected_count_independently_verified_under_declared_definition",
+        "open_review_issues"
+      ]
+    }
+  ]
+}

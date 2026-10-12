@@ -1,0 +1,31 @@
+{
+  "candidate_id": "real-48",
+  "revision": "smoke-1",
+  "stage": "cpu-smoke",
+  "training_release": false,
+  "gpu_runs": 0,
+  "intended_use": "mechanism_proof_for_the_real_data_sub_line",
+  "splits": {
+    "pool_a": "train",
+    "pool_b": "validation",
+    "pool_c": "test"
+  },
+  "entity_pools": {
+    "pool_a": 56,
+    "pool_b": 56,
+    "pool_c": 55
+  },
+  "canonical_key": "iso3",
+  "count_per_pool": 16,
+  "sources": [
+    "naturalearth_110m_admin_0_countries",
+    "worldbank_wdi_sp_pop_totl_2021"
+  ],
+  "artifacts": {
+    "samples.jsonl": "sha256:29a925c92de0d98d78aff61d38a2804d3ffdbf752c4315ec27f9ae559cd43601",
+    "build_report.json": "sha256:d77a5fc5f009f547b7d6b0df4cd3a7d91008b0c52583ec5bf3eda48289fcec61",
+    "replay_report.json": "sha256:d3471b7b7f267d20609c7aad43e0be6e0f5cfb7aa6d714fbc528eb5f344b5f52",
+    "split_report.json": "sha256:288a49ca8d4fdefbe7d89e6d379f69e5bca571c6634cc35f5e64ba91a0593bde"
+  },
+  "samples_digest": "sha256:79e62b311240654dd7abcab577b1b27a9dcad61fcd59e2d025b023f7d253d185"
+}

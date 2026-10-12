@@ -1,0 +1,106 @@
+{
+  "candidate_manifest": {
+    "manifest_version": "shape-ood-recovery-manifest-v1",
+    "candidate_revision": "r2",
+    "intended_use": "paired_error_kind_ablation_candidate",
+    "training_release": false,
+    "trajectory": "recovery",
+    "label_policy": "failed_tool_call_context_only; successful_recovery_and_termination_supervised",
+    "paired_baseline_bundle": "recovery-baseline",
+    "world_policy": "same_world_paired_ablation",
+    "changed_factor": "recovery_error_kind",
+    "paired_baseline": {
+      "paired_baseline_bundle": "recovery-baseline",
+      "world_policy": "same_world_paired_ablation",
+      "changed_factor": "recovery_error_kind",
+      "baseline_samples": 144,
+      "shared_sample_ids": 144,
+      "identical_outside_changed_factor": true,
+      "initial_prompts_identical": true,
+      "changed_error_kinds": 144,
+      "divergent_samples": [],
+      "prompt_divergent_samples": [],
+      "problems": []
+    },
+    "generator": {
+      "module": "strata.train.shape_ood",
+      "version": "synth/f2-shape-ood-recovery-v1",
+      "count_per_cell": 24,
+      "cells": 6
+    },
+    "split_policy": {
+      "shared_root": "train",
+      "case_only": "validation",
+      "disjoint_root": "test",
+      "full_and_partial_same_shape_same_split": true,
+      "explicit_assignments": true
+    },
+    "counts": {
+      "train": 48,
+      "validation": 48,
+      "test": 48
+    },
+    "recovery_error_kinds": [
+      "missing_argument",
+      "value_as_key",
+      "wrong_role"
+    ],
+    "kind_counts": {
+      "missing_argument": 48,
+      "value_as_key": 48,
+      "wrong_role": 48
+    },
+    "kind_counts_per_split": {
+      "train": {
+        "missing_argument": 16,
+        "value_as_key": 16,
+        "wrong_role": 16
+      },
+      "validation": {
+        "missing_argument": 16,
+        "value_as_key": 16,
+        "wrong_role": 16
+      },
+      "test": {
+        "missing_argument": 16,
+        "value_as_key": 16,
+        "wrong_role": 16
+      }
+    },
+    "samples_digest": "sha256:67a295a1bfb6f946d912ffb40fc6067f4ad4e0147a985b21c5dc7a0fa00cf0a6",
+    "worlds": {
+      "count": 144,
+      "unique": 144,
+      "data_geo_namespace_pairs_match": true
+    },
+    "content_schema_fingerprint_count": 3,
+    "content_schema_crossings": [],
+    "source_hashes": {
+      "strata/train/synth.py": "sha256:e6a7866a0e07442c82cb15c1ec72a1d769123d6faf111d7db196db95e748f024",
+      "strata/train/shape_ood.py": "sha256:2ebeaf0e4890727926cd98687fd067845efb844d9c408dd346937d2d427fee7d",
+      "strata/train/build.py": "sha256:55d5bb8f26df04f94a9d40bc3f9d6661ebee739396d95b0310b580b6e1e1cb85",
+      "strata/train/replay.py": "sha256:f94288a9aea8314f0582ab449b1039d965c3ae61e40bde166e4c2207c153dd42",
+      "strata/train/split.py": "sha256:9a31f8a1e8f0a64bd4d9e033d4d9f33e5849cc01fa49de482fc9567b45f9f1c3",
+      "strata/train/schema_groups.py": "sha256:8d6f8d71638c6f1d2b442d8a9e5b0c0c5941666e42bcef513f6647d4e0fe72f0",
+      "scripts/build_recovery_candidate.py": "sha256:eb27b46e6e2ed83b84352999b341a206b362f0cddc68d0d09a05d34cad586e59"
+    },
+    "artifact_hashes": {
+      "samples.jsonl": "sha256:5655ea2fcb12688422b8a92cab6e46f259b03302632a1969f953d4c6569f417f",
+      "build_report.json": "sha256:30a90eb6ccf83332ab5ed11b7d1a2b4303f29bc95a3e44faf1f72b5b93c9a1d6",
+      "replay_report.json": "sha256:3210c26d5b9b93a06d07934b9495eed189ab77a708756efb892156e6b057dd32",
+      "split_report.json": "sha256:ca68df66cb30b5d57e00f8b4b323c7e7db41ef5fc65a1ee49be580708240cf05"
+    }
+  },
+  "source_samples_digest": "sha256:67a295a1bfb6f946d912ffb40fc6067f4ad4e0147a985b21c5dc7a0fa00cf0a6",
+  "base_metadata_digest": "sha256:9cb05c57647a87c0f334c9fbc1502a5bf5f1c1e1cb8bab95c403b997d44ebb11",
+  "train_split": "train",
+  "eval_split": "validation",
+  "trajectory": "recovery",
+  "train_count": 48,
+  "steps": 48,
+  "learning_rate": 5e-06,
+  "seed": 7,
+  "max_length": 4096,
+  "method": "full_parameter_bfloat16; not LoRA/GRPO",
+  "label_policy": "failed_tool_call_context_only; successful_recovery_and_termination_supervised"
+}

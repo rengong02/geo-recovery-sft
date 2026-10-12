@@ -1,0 +1,62 @@
+{
+  "candidate_manifest": {
+    "manifest_version": "shape-ood-recovery-manifest-v1",
+    "intended_use": "training_candidate_with_recovery_shape_ood_test",
+    "training_release": false,
+    "trajectory": "recovery",
+    "label_policy": "failed_tool_call_context_only; successful_recovery_and_termination_supervised",
+    "generator": {
+      "module": "strata.train.shape_ood",
+      "version": "synth/f2-shape-ood-recovery-v1",
+      "count_per_cell": 24,
+      "cells": 6
+    },
+    "split_policy": {
+      "shared_root": "train",
+      "case_only": "validation",
+      "disjoint_root": "test",
+      "full_and_partial_same_shape_same_split": true,
+      "explicit_assignments": true
+    },
+    "counts": {
+      "train": 48,
+      "validation": 48,
+      "test": 48
+    },
+    "samples_digest": "sha256:c853ffe62347a8f25adc235d02754b83e79682f0d11ea5606411e4086b33b75a",
+    "worlds": {
+      "count": 144,
+      "unique": 144,
+      "data_geo_namespace_pairs_match": true
+    },
+    "content_schema_fingerprint_count": 3,
+    "content_schema_crossings": [],
+    "source_hashes": {
+      "strata/train/synth.py": "sha256:25b47122c4cd449d5c91240c187ab6de7bd827cdf1bb0018697d86ca04fb9836",
+      "strata/train/shape_ood.py": "sha256:2ebeaf0e4890727926cd98687fd067845efb844d9c408dd346937d2d427fee7d",
+      "strata/train/build.py": "sha256:ca73d2599b40e7efb87aa2bc40bcb762b51ed6637ec46020fbb39bcf47a093c1",
+      "strata/train/replay.py": "sha256:f94288a9aea8314f0582ab449b1039d965c3ae61e40bde166e4c2207c153dd42",
+      "strata/train/split.py": "sha256:9a31f8a1e8f0a64bd4d9e033d4d9f33e5849cc01fa49de482fc9567b45f9f1c3",
+      "strata/train/schema_groups.py": "sha256:8d6f8d71638c6f1d2b442d8a9e5b0c0c5941666e42bcef513f6647d4e0fe72f0",
+      "evals/train/f2_recovery_20261010_r1/audit_candidates.py": "sha256:39d378f5c437a4ff7f4373c32ce4bd26be9d8556608986d07fe4a19660fcea3e"
+    },
+    "artifact_hashes": {
+      "samples.jsonl": "sha256:ef99a9f50b7630aca378c1875c56066ce8a4fbbe5990d44bf0c337833df60917",
+      "build_report.json": "sha256:38c863249d609caed4e9b59f80c0ea1534ade20239dd24cc5c7aa9dff848ddd2",
+      "replay_report.json": "sha256:2a97079d90abf829462300216203863f12fa6cfbc0ba2a14e2b715cf52af4b39",
+      "split_report.json": "sha256:ca68df66cb30b5d57e00f8b4b323c7e7db41ef5fc65a1ee49be580708240cf05"
+    }
+  },
+  "source_samples_digest": "sha256:c853ffe62347a8f25adc235d02754b83e79682f0d11ea5606411e4086b33b75a",
+  "base_metadata_digest": "sha256:89c6b09692dca73864f5ec049f6e3da640159b061fef1fd8b02de07bc6b6156a",
+  "train_split": "train",
+  "eval_split": "validation",
+  "trajectory": "recovery",
+  "train_count": 48,
+  "steps": 48,
+  "learning_rate": 5e-06,
+  "seed": 7,
+  "max_length": 4096,
+  "method": "full_parameter_bfloat16; not LoRA/GRPO",
+  "label_policy": "failed_tool_call_context_only; successful_recovery_and_termination_supervised"
+}

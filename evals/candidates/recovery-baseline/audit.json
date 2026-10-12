@@ -1,0 +1,31 @@
+{
+  "scope": "f2_recovery_candidate_only",
+  "training_release": false,
+  "model_inference_or_training_runs": 0,
+  "api_calls": 0,
+  "samples": 144,
+  "paired_worlds": 0,
+  "unique_worlds": 144,
+  "gold_ok": 144,
+  "validator_ok": 144,
+  "replayed_equal": 144,
+  "replay_tools_changed": 0,
+  "failed_step_counts": {
+    "1": 144
+  },
+  "split_counts": {
+    "train": 48,
+    "validation": 48,
+    "test": 48
+  },
+  "training_ready": true,
+  "training_readiness_reasons": [],
+  "content_schema_crossings": [],
+  "artifact_hashes": {
+    "samples.jsonl": "sha256:ef99a9f50b7630aca378c1875c56066ce8a4fbbe5990d44bf0c337833df60917",
+    "build_report.json": "sha256:38c863249d609caed4e9b59f80c0ea1534ade20239dd24cc5c7aa9dff848ddd2",
+    "replay_report.json": "sha256:2a97079d90abf829462300216203863f12fa6cfbc0ba2a14e2b715cf52af4b39",
+    "split_report.json": "sha256:ca68df66cb30b5d57e00f8b4b323c7e7db41ef5fc65a1ee49be580708240cf05",
+    "manifest.json": "sha256:01c6aa6cfe398112c81f74bb949bdf7c392a7470efbffc771e11b8dd82424910"
+  }
+}
