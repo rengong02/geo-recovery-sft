@@ -1,11 +1,7 @@
 """V2: compare a stored observation against a fresh replay of the same call.
 
-The first design required byte equality and Codex refused it, correctly: two
-runs of the *same correct* call differ in timestamps, workspace paths and the
-bytes of any rendered image. A byte rule refuses good samples, and the refusals
-look like data rot when they are not.
-
-So the comparison is layered, and the layering is the substance:
+Repeated calls can differ in timestamps, workspace paths, and rendered-image
+bytes. Comparison uses exact structural checks and normalized observations:
 
 | layer | what | how |
 |---|---|---|

@@ -1,23 +1,4 @@
-"""Replace the lab's absolute path root with a neutral placeholder.
-
-The runs recorded in `evals/train/` happened on a shared lab machine, so their
-reports, logs and manifests carry that machine's absolute paths -- including a
-home directory that identifies a person. A repository that is meant to be read
-by strangers should not ship someone's account name in every frozen artifact.
-
-The substitution is deliberately **mechanical and documented** rather than a
-hand-edit of the interesting-looking fields: a reader who has the original file
-can apply the same rule and get the same bytes back, which is what keeps the
-frozen reports checkable after redaction. Redacting by hand would leave the
-hashes unverifiable and the rule unknown.
-
-Consequence, stated where it is used and not only here: the on-disk copies are
-**not byte-identical to the server's** any more. `results/` records the hashes of
-the redacted copies and says so.
-
-Run with `--check` to report without writing -- that is the form to use as a
-gate before publishing.
-"""
+"""Replace machine-local account paths in text artifacts with a neutral placeholder."""
 
 from __future__ import annotations
 

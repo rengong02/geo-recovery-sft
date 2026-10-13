@@ -51,8 +51,7 @@ from .evidence import (
 def geobenchx_root() -> Path:
     """Locate the GeoBenchX checkout.
 
-    `GEOBENCHX_ROOT` wins; otherwise a sibling of this repo, which is where the
-    project keeps it (`work/CoreCoder` and `work/GeoBenchX`).
+    `GEOBENCHX_ROOT` wins; otherwise a sibling checkout named `GeoBenchX`.
     """
     import os
 

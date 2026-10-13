@@ -9,7 +9,7 @@ So this validator is the first thing built, before any template, because the
 format is the part that cannot be retrofitted: a missing observation cannot be
 recovered afterwards without inventing it.
 
-Two failures it exists to catch, both found by Codex on the earlier gate:
+The validator checks two classes of invalid samples:
 
 * **a renamed reserved task walked through.** Matching on the task id string
   means `RENAMED_DERIVED` is a new task as far as the gate can tell. The sample
@@ -347,7 +347,7 @@ def test_every_lineage_field_is_required():
 
 
 def test_a_renamed_reserved_task_is_still_refused():
-    """The bypass Codex demonstrated on the earlier gate.
+    """Reserved lineage must remain blocked after a task is renamed.
 
     Renaming the task changes the id and nothing else -- the sample still comes
     from the reserved data, so it is still refused.

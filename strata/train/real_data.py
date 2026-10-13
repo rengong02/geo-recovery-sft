@@ -1,30 +1,4 @@
-"""Task worlds built from real, published GIS tables.
-
-The synthetic line can name its own worlds: each case generates its entities, so
-"these rows were never in training" is true by construction. Real tables do not
-offer that. The entities are countries, they exist once, and every case drawn
-from the same table would overlap every other one.
-
-So the entities are partitioned instead. The canonical key space -- the country
-codes present in *both* sources -- is split into three disjoint pools, one per
-split, and a case only ever draws from its own split's pool. Whether the pools
-are disjoint is then a property anyone can check on the emitted candidate rather
-than a promise in a docstring.
-
-Two consequences are load-bearing and are recorded rather than glossed:
-
-* **a case's frames are subsets of the real tables, not the tables.** Row ids
-  travel with the spec so the subset is reproducible and so nothing downstream
-  can describe the frame as "the Natural Earth table".
-* **the licence travels too.** These snapshots are redistributable (World Bank
-  CC BY 4.0, Natural Earth public domain) but attribution is a condition, not a
-  courtesy, so it is part of the spec that reaches the record.
-
-The failure kinds are the same three as the synthetic line, and they are
-executed rather than written down -- see `build_real_recovery_plan`. One
-candidate wrong key that *looked* plausible (`date`) merges successfully and is
-therefore not offered as a mistake anywhere in this module.
-"""
+"""Build task tables from verified public snapshots using disjoint entity pools."""
 
 from __future__ import annotations
 
@@ -225,7 +199,6 @@ class RealTableSpec:
             "source_sha256": "sha256:" + source["sha256"],
             "source_licence": source["licence"],
             "source_attribution": source["attribution"],
-            "source_version": source.get("source_version", ""),
             "kind": self.kind,
             "pool": self.pool,
             "subset_row_ids": list(self.entity_ids),
@@ -318,12 +291,7 @@ class RealLoadTool:
 
 
 def fresh_real_tools(specs: list[RealTableSpec], state: dict, sources_dir: Path) -> dict:
-    """The real-data workspace: one snapshot loader plus the benchmark's own tools.
-
-    The four tabular tools are the benchmark's unmodified code, for the same
-    reason as on the synthetic side: what has to be independent is the data, not
-    the arithmetic, and a re-implementation would drift from what evaluation runs.
-    """
+    """Create an isolated workspace with a snapshot loader and four local tabular tools."""
     from .slim_tools import synthetic_tabular_tools
 
     tools = synthetic_tabular_tools(state)

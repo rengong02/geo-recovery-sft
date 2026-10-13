@@ -23,23 +23,20 @@ def create_bundle(output: Path, candidate: Path, geobenchx_root: Path) -> dict:
     if output.exists() or archive.exists():
         raise FileExistsError("bundle/archive already exists; choose a new output name")
     manifest, _samples, _split = load_candidate_bundle(candidate)
-    if not (geobenchx_root / "geobenchx" / "tools.py").is_file():
-        raise FileNotFoundError("GeoBenchX source checkout is required")
-
     paths: dict[str, Path] = {}
     for directory in ("corecoder", "strata", "scripts"):
         for path in sorted((ROOT / directory).rglob("*")):
             if path.is_file() and path.suffix in {".py", ".sh"}:
-                paths["CoreCoder/" + str(path.relative_to(ROOT))] = path
+                paths["project/" + str(path.relative_to(ROOT))] = path
     for name in sorted({
         "samples.jsonl", "build_report.json", "replay_report.json", "split_report.json",
         "manifest.json", "audit.json", "audit_candidates.py",
     }):
         source = candidate / name
         if source.is_file():
-            paths["CoreCoder/" + str(source.relative_to(ROOT))] = source
-    for name in ("pyproject.toml", "LICENSE"):
-        paths["CoreCoder/" + name] = ROOT / name
+            paths[f"project/evals/candidates/{candidate.name}/{name}"] = source
+    for name in ("pyproject.toml", "README.md", "LICENSE", "requirements-train.txt"):
+        paths["project/" + name] = ROOT / name
     for path in sorted((geobenchx_root / "geobenchx").rglob("*.py")):
         paths["GeoBenchX/" + str(path.relative_to(geobenchx_root))] = path
 
@@ -56,7 +53,7 @@ def create_bundle(output: Path, candidate: Path, geobenchx_root: Path) -> dict:
         "bundle_digest": digest_mapping(files),
         "files": files,
         "candidate_manifest": manifest,
-        "recipe": "base144; then recovery train48 epoch1 lr5e-6; validation48; test held out",
+        "recipe": "base144; recovery SFT train48 steps48 lr5e-6 seed7; validation48; test held out",
         "excluded": ["lab_ssh_key", ".env", "models", "venvs", "historical_results", "GeoBenchX/data"],
     }
     write_json_atomic(output / "bundle_manifest.json", bundle_manifest)

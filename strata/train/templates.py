@@ -159,8 +159,7 @@ class F2Case:
 #:
 #: `merge_dataframes` is a **left** join, so both runs produce the identical
 #: 251x96 frame. A check on shape or row count cannot tell them apart at all --
-#: which is exactly the weakness Codex named, and it is worse here than it
-#: sounds: the row-count check would not be merely weak, it would be blind.
+#: the correct key pair must also preserve meaningful value matches.
 F2_CASES: list[F2Case] = [
     F2Case(
         case_id="gdp_country_code",

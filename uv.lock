@@ -426,7 +426,7 @@ wheels = [
 ]
 
 [[package]]
-name = "corecoder"
+name = "geo-recovery-sft"
 version = "0.7.0"
 source = { editable = "." }
 dependencies = [

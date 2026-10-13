@@ -67,19 +67,16 @@ def create_bundle(output: Path, candidate: Path, sources_dir: Path,
     manifest, _samples, _split = load_candidate_bundle(candidate)
     for source_id in SOURCES:
         verify_source(source_id, sources_dir)
-    if not (geobenchx_root / "geobenchx" / "tools.py").is_file():
-        raise FileNotFoundError("GeoBenchX source checkout is required")
-
     paths: dict[str, Path] = {}
     for directory in CODE_DIRECTORIES:
         for path in sorted((ROOT / directory).rglob("*")):
             if path.is_file() and path.suffix in {".py", ".sh"}:
-                _copy_file(paths, "CoreCoder/" + str(path.relative_to(ROOT)), path)
+                _copy_file(paths, "project/" + str(path.relative_to(ROOT)), path)
 
     for name in CANDIDATE_FILES:
         _copy_file(
             paths,
-            "CoreCoder/" + str((candidate / name).relative_to(ROOT)),
+            f"project/evals/candidates/{candidate.name}/{name}",
             candidate / name,
         )
 
@@ -87,17 +84,17 @@ def create_bundle(output: Path, candidate: Path, sources_dir: Path,
         source_file = source_path(source_id, sources_dir)
         _copy_file(
             paths,
-            "CoreCoder/" + str(source_file.relative_to(ROOT)),
+            "project/evals/sources/" + source_file.name,
             source_file,
         )
 
     geo_fallback = output.parent / ("." + output.name + ".ne_110m_admin_0_attributes.json")
     _write_geo_attribute_fallback(
         source_path("naturalearth_110m_admin_0_countries", sources_dir), geo_fallback)
-    paths["CoreCoder/evals/train/real_sources/ne_110m_admin_0_attributes.json"] = geo_fallback
+    paths["project/evals/sources/ne_110m_admin_0_attributes.json"] = geo_fallback
 
-    for name in ("pyproject.toml", "LICENSE"):
-        _copy_file(paths, "CoreCoder/" + name, ROOT / name)
+    for name in ("pyproject.toml", "README.md", "LICENSE", "requirements-train.txt"):
+        _copy_file(paths, "project/" + name, ROOT / name)
 
     for path in sorted((geobenchx_root / "geobenchx").rglob("*.py")):
         _copy_file(paths, "GeoBenchX/" + str(path.relative_to(geobenchx_root)), path)
@@ -126,7 +123,7 @@ def create_bundle(output: Path, candidate: Path, sources_dir: Path,
             }
             for source_id, source in SOURCES.items()
         },
-        "recipe": "base48; then recovery train16 epoch1 lr5e-6 seed7; validation16; test held out",
+        "recipe": "base48; recovery SFT train16 steps48 lr5e-6 seed7; validation16; test held out",
         "excluded": ["lab_ssh_key", ".env", "models", "venvs", "historical_results",
                      "GeoBenchX/data"],
     }
@@ -151,9 +148,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--candidate-dir", type=Path,
-                        default=ROOT / "evals" / "train" / "f2_real_20261011")
+                        default=ROOT / "evals" / "candidates" / "real-48")
     parser.add_argument("--sources-dir", type=Path,
-                        default=ROOT / "evals" / "train" / "real_sources")
+                        default=ROOT / "evals" / "sources")
     parser.add_argument("--geobenchx-root", type=Path, default=ROOT.parent / "GeoBenchX")
     args = parser.parse_args()
     print(json.dumps(create_bundle(args.out, args.candidate_dir, args.sources_dir,

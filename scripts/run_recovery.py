@@ -12,7 +12,7 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_BUNDLE = ROOT / "evals" / "train" / "f2_recovery_20261010_r1"
+DEFAULT_BUNDLE = ROOT / "evals" / "candidates" / "recovery-ablation"
 sys.path.insert(0, str(ROOT))
 
 from scripts.baseline_state import (
@@ -189,9 +189,9 @@ def main() -> int:
     parser.add_argument("--bundle-dir", type=Path,
                         default=Path(os.getenv("STRATA_BUNDLE_DIR", str(DEFAULT_BUNDLE))))
     parser.add_argument("--run-root", type=Path, default=Path(os.getenv(
-        "STRATA_RUN_ROOT", "<lab-root>/experiments/f2_recovery_20261010_r1")))
+        "STRATA_RUN_ROOT", str(ROOT / "outputs" / "recovery"))))
     parser.add_argument("--model", type=Path, default=Path(os.getenv(
-        "STRATA_MODEL", "<lab-root>/models/Qwen3-0.6B")))
+        "STRATA_MODEL", str(ROOT / "models" / "Qwen3-0.6B"))))
     parser.add_argument("--budget-seconds", type=float,
                         default=float(os.getenv("BUDGET_SECONDS", "0")))
     args = parser.parse_args()
@@ -203,7 +203,7 @@ def main() -> int:
     for name in ("HF_HUB_OFFLINE", "TRANSFORMERS_OFFLINE"):
         os.environ[name] = "1"
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
-    os.environ["GEOBENCHX_ROOT"] = str(ROOT.parent / "GeoBenchX")
+    os.environ.setdefault("GEOBENCHX_ROOT", str(ROOT.parent / "GeoBenchX"))
 
     manifest, samples, split = load_candidate_bundle(args.bundle_dir)
     if not args.model.is_dir() or not (args.model / "config.json").is_file() or not list(args.model.glob("*.safetensors")):

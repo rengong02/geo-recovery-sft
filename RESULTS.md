@@ -1,186 +1,71 @@
-# Results — F2 recovery, paired error-kind ablation (r2)
+# Results
 
-Every number below was read out of the frozen report JSON in `evals/runs/`, not
-from prose. The reports were pulled from the server and **verified against the server's own
-`sha256sum`** before being used here (§5). Pulls are read-only; nothing was written on the server.
+本页记录冻结 candidate 的训练和评测结果。每个数字均来自 `evals/runs/` 下的 JSON 报告，分母按独立样本和重复运行分别说明。
 
-## 0. What the experiment asks
+## 1. 合成 paired ablation
 
-r1 trained on a recovery trace whose failure was produced by an invented, self-labelling key
-(`geokey="region_code__missing"`). Its SFT scored `0/48` on validation — **worse than base**.
-The measured inference-time failure is different: `ValueError: merge on str and float64 columns`,
-from using a real numeric column as a join key.
+candidate 包含 train、validation、test 各 48 条样本，三类错误各 48 条。ablation 与 control 共享 sample id、world、数据摘要和初始提示，只改变 `recovery_error_kind`，从而隔离错误类型这一数据因素。
 
-r2 asks one question: **if the failure class in the training data is swapped for the real one —
-and nothing else changes — does recovery SFT work?**
+| 运行 | 样本 / 运行次数 | 正确 | 准确率 |
+|---|---:|---:|---:|
+| Base | 144 | 0 | 0% |
+| SFT validation，seed 7 | 48 | 48 | 100% |
+| SFT held-out test，seed 7 | 48 | 42 | 87.5% |
+| SFT validation，seed 17 | 48 | 48 | 100% |
+| SFT held-out test，seed 17 | 48 | 48 | 100% |
 
-"Nothing else" is enforced, not asserted. The builder refuses to emit r2 unless, against r1:
-sample ids identical, worlds identical, dataset digests identical, initial system/user prompts
-identical, and `recovery_error_kind` changed in all 144 samples. Measured at build time:
+两个 seed 在同一组 48 个 test 样本上运行，合计 90/96 次运行正确。这个合计值用于描述 seed 结果，不能当作 96 个独立 test 任务。validation 的合计为 96/96 次运行正确。
 
-```
-shared_sample_ids 144 | identical_outside_changed_factor true | initial_prompts_identical true
-changed_error_kinds 144 | divergent_samples [] | prompt_divergent_samples [] | problems []
-```
+## 2. 真实数据线
 
-r2 is therefore **not** an independent new-world candidate. It is r1 with one factor swapped,
-and the manifest says so (`world_policy=same_world_paired_ablation`).
+真实 candidate 包含 48 条样本，train、validation、test 各 16 条。World Bank WDI 与 Natural Earth 的共有国家键被分到三个互不相交的实体池；每条样本记录来源、快照 SHA256、许可证、实体池和实体标识。
 
-## 1. Result
+| 运行 | 样本 | 正确 | 格式失败 | 报告错误 |
+|---|---:|---:|---:|---:|
+| Base | 48 | 0 | 18 | 29 |
+| Recovery SFT validation | 16 | 16 | 0 | 0 |
+| Recovery SFT held-out test | 16 | 16 | 0 | 0 |
 
-| experiment | split | model | seed | n | correct | acc | answered | fmt fail | no-term | reported err |
-|---|---|---|---|---|---|---|---|---|---|---|
-| `r2-base-144` | all 144 | Qwen3-0.6B (base) | — | 144 | **0** | 0.000 | 2 | 77 | 51 | 65 |
-| `r2-sft-seed7-val` | validation | r2 SFT ckpt | 7 | 48 | **48** | 1.000 | 48 | 0 | 0 | 0 |
-| `r2-sft-seed7-test` | test | r2 SFT ckpt | 7 | 48 | **42** | 0.875 | 42 | 6 | 6 | 0 |
-| `r2-sft-seed7-test-max12` | test | r2 SFT ckpt | 7 | 48 | **42** | 0.875 | 42 | 6 | 6 | 0 |
-| `r2-sft-seed17-val` | validation | seed17 SFT ckpt | 17 | 48 | **48** | 1.000 | 48 | 0 | 0 | 0 |
-| `r2-sft-seed17-test` | test | seed17 SFT ckpt | 17 | 48 | **48** | 1.000 | 48 | 0 | 0 | 0 |
+真实 validation 和 test 的正确轨迹都是直接正确调用，不表示模型在推理期先产生错误后完成恢复。
 
-Paired controls, read from their own reports (§5) rather than quoted:
+## 3. 训练配置
 
-| control | n | correct | answered | fmt fail | no-term | reported err |
-|---|---|---|---|---|---|---|
-| `r1-base-144` | 144 | 0 | 2 | 77 | 51 | 65 |
-| `r1-sft-seed7-val` | 48 | 0 | 0 | 48 | 48 | 0 |
-| `r2-base-144` | 144 | 0 | 2 | 77 | 51 | 65 |
+- 模型：Qwen3-0.6B。
+- 方法：full-parameter BF16 SFT，48 steps，learning rate `5e-6`，合成 seed 7/17、真实 seed 7，最大序列长度 4096。
+- 训练目标：屏蔽系统提示、用户问题、工具上下文和失败工具调用，只监督正确恢复与合法终止。
+- 解码：greedy，`max_new_tokens=1024`，`max_turns=6`。
+- 评分：`v2.1-status-schema`，不依赖 judge model。
+- 报告目录：`evals/runs/recovery-ablation/`、`evals/runs/recovery-ablation-seed17/`、`evals/runs/real-seed7/`。
 
-The two Base rows are not merely equal in aggregate — re-checked sample by sample: **shared ids 144,
-outcome differences 0**. r1's SFT validation answered nothing at all (48/48 `no_termination`), and
-r1/r2 SFT validation ran the identical 48 samples. So the difference between the two SFT runs cannot
-be attributed to their starting points or to a different validation set.
+## 4. 失败分析
 
-Trajectory telemetry (tool observations, continuation after failure, repeated calls), measured
-from the same reports:
+seed 7 test 的 6 个失败全部来自 `disjoint_root` family。模型在错误观测后重复选择数值列作为连接键，导致类型不匹配，并重复同一工具调用。把同一冻结 checkpoint 的最大回合数从 6 调到 12 后，结果仍为 42/48，说明增加回合不能解决该泛化问题。
 
-| experiment | tool calls | failed observations | continued after failure | duplicate calls |
-|---|---|---|---|---|
-| `r2-base-144` | 163 | 144 | 31 / 144 | 41 |
-| `r2-sft-seed7-val` | 192 | 48 | 48 / 48 | 0 |
-| `r2-sft-seed7-test` | 202 | 64 | 46 / 48 | 18 |
-| `r2-sft-seed7-test-max12` | 238 | 100 | 46 / 48 | 54 |
-| `r2-sft-seed17-val` | 192 | 48 | 48 / 48 | 0 |
-| `r2-sft-seed17-test` | 158 | 14 | 14 / 48 | 0 |
+## 5. 限制
 
-Base success is not near-miss: `0/144` has a 95% Wilson upper bound of **2.60%**; of the 144,
-only 2 even terminated with an answer, and both were wrong key pairs.
+- 合成线只有 96 个不同样本，两个 seed 的合计是重复运行数，不是独立任务数。
+- 真实线只覆盖窄 schema 和 join-key 任务，不能外推到通用 GIS Agent 或广义在线恢复能力。
+- 结果依赖训练数据分布、工具 schema、prompt、模型和解码设置。
+配对 control 使用单一缺失键错误轨迹，其 seed 7 validation 为 0/48；三类错误轨迹的 seed 7 validation 为 48/48。两者共用 144 个 world 和初始提示，Base 的逐样本结果一致。该对照限定于当前配方与任务分布。
 
-## 2. The denominators — read this before quoting any number
+## 原始报告索引
 
-**"192" counts runs, not tasks. There are 96 distinct samples.**
+下表 SHA256 标识仓库内的报告文件，链接可查看逐样本结果与运行配置。
 
-| | distinct samples | runs |
-|---|---|---|
-| validation | 48 | 48 × 2 seeds = 96 |
-| test | 48 | 48 × 2 seeds = 96 |
-| **total** | **96** | **192** |
-
-Checked directly against the split report: `train/validation/test = 48/48/48`, the validation and
-test reports cover exactly their named split, and `validation ∩ test = ∅`.
-
-So the honest sentences are:
-
-- validation: **48 samples, run twice — 96/96 correct**, 95% Wilson CI **[96.15%, 100%]**
-- held-out test: **48 samples, run twice — 90/96 correct**, 95% Wilson CI **[87.03%, 97.10%]**
-- seed spread is real: seed7 test `42/48 = 87.5%` [75.30%, 94.14%], seed17 test `48/48` [92.59%, 100%]
-
-and the dishonest ones are "192 tasks", "93.75% accuracy", or any figure quoted without its
-denominator, seed and synthetic-data nature.
-
-### 2.1 A digest caveat found while building this table
-
-`samples_digest` is **order-sensitive** — it hashes the sample records in list order. The two
-seeds' validation runs used the same 48 samples in a *different order*, so their digests differ
-(`b3934a96…` vs `20961785…`) even though the id sets are identical. The test runs happened to
-share an order, so their digests match (`7808f8e1…`).
-
-Consequence: equal digests imply equal set *and* order; equal id sets do **not** imply equal
-digests. Compare id sets when the question is "same samples", digests when it is "same file".
-
-## 3. The failure that remains, and the diagnosis that it is not a budget problem
-
-All 6 test failures under seed7 are `no_termination` and **all 6 are in `disjoint_root__full`**
-(that family: 18/24 correct, 95% Wilson [55.10%, 88.00%]). The model loads both frames, picks
-`statkey=population_2021` — a real numeric column — with `geokey=area_code`, gets
-`ValueError: merge on str and float64 columns`, then repeats the identical call until the turn
-budget runs out.
-
-`test_report_maxturns12.json` raises `max_turns` 6 → 12 on the same frozen checkpoint and the same
-test split, and the result is **byte-for-byte the same outcome**: `42/48`, same 6 failures, same
-`no_termination`. Calls go 202 → 238, failed observations 64 → 100, duplicates 18 → 54 — more
-attempts, zero new successes. Deterministic repetition, not a budget shortfall. No further
-turn-budget experiments were run.
-
-Reproducing this pair is the strongest single piece of evidence in the project: the same model,
-same checkpoint, same samples, one changed parameter, and the metric does not move while the
-effort doubles.
-
-## 4. Recipe and provenance
-
-| field | value |
+| 报告 | SHA256 |
 |---|---|
-| candidate | `evals/candidates/recovery-ablation`, revision r2 |
-| `samples_digest` | `sha256:67a295a1bfb6f946d912ffb40fc6067f4ad4e0147a985b21c5dc7a0fa00cf0a6` |
-| split | train 48 / validation 48 / test 48, explicit, by shape |
-| generator | `strata.train.shape_ood` / `synth/f2-shape-ood-recovery-v1` |
-| trajectory | `recovery` |
-| label policy | `failed_tool_call_context_only; successful_recovery_and_termination_supervised` |
-| error kinds | `missing_argument` 48 / `value_as_key` 48 / `wrong_role` 48; `16/16/16` in every split |
-| training | full-parameter BF16 (not LoRA/GRPO), 48 steps, `lr=5e-6`, 48 train rows, `max_length=4096` |
-| base model | `<lab-root>/models/Qwen3-0.6B` |
-| decoding | greedy (`do_sample=false`), `max_new_tokens=1024`, `max_turns=6` (12 in the diagnostic) |
-| scorer | `v2.1-status-schema` — deterministic, no judge model |
-| env | python 3.12.8, torch 2.5.1+cu118, transformers 4.51.3, pandas 3.0.6, numpy 1.26.4 |
-| archive | `sha256:fb7a3079eff25f8e469e46316d33db0570ff1951314dcfadd2e5b588c3811720` |
+| [真实 Base](evals/runs/real-seed7/base/report.json) | `98f86682ee932bd485de456f10b0703fdb9a976be73319fc324d54834b071d38` |
+| [真实 SFT test](evals/runs/real-seed7/sft_recovery16_epoch1_lr5e-6/test_report.json) | `858c8afd6be2b0f03721abcfa18f8495a7a34e00e327f456e63f1970ff6b145b` |
+| [真实 SFT validation](evals/runs/real-seed7/sft_recovery16_epoch1_lr5e-6/validation_report.json) | `d1df5378b9d113145eda982438f5400614aafc949f63e1d8c38882a94d358dd8` |
+| [合成 Base](evals/runs/recovery-ablation/base/report.json) | `e57fd1c7f15d9af0d2d683d94cb414ef61c44249dc2a98bce7fdeeee478f12b0` |
+| [合成 SFT seed 7 test](evals/runs/recovery-ablation/sft_seed7/test_report.json) | `afd6cf6bbd35d669796ac8edf1248a0649b217a4d0a96bb4a15d9166eb9cd94d` |
+| [合成 SFT seed 7 validation](evals/runs/recovery-ablation/sft_seed7/validation_report.json) | `a73c036dcfd01d20afaaa332f64fe3ae8758ac9eca23cb0a415839e6f4a0ff07` |
+| [合成 SFT seed 17 test](evals/runs/recovery-ablation-seed17/sft_seed17/test_report.json) | `bd8fd474f2bb190ba3e5bca29312f872729cdf1f639ae9101504580e896e5855` |
+| [合成 SFT seed 17 validation](evals/runs/recovery-ablation-seed17/sft_seed17/validation_report.json) | `f335aefc08227b5398f31c2b445cb1f13a12186e8de163c46b9e18413af08e5c` |
+| [12 回合诊断](evals/runs/recovery-ablation/sft_seed7/test_report_maxturns12.json) | `e5179c116412577ae0393b27c2ce2371b664af7070c12d910ca2fb86f027c318` |
+| [配对 control Base](evals/runs/recovery-baseline/base/report.json) | `ed72e4e044793af8a8a44bba060d8a1c0a1de5e4fb6f11f90112a3d30c969fb3` |
+| [配对 control SFT validation](evals/runs/recovery-baseline/sft_seed7/validation_report.json) | `53801e5b97b419a71c0e5b97286d580698e42c83329637673a847c63da4b5679` |
 
-The archive hash is a **frozen-file integrity check, not a version id** — archives embed
-wall-clock `steps[].seconds`, so re-running the builder does not reproduce it. Compare
-`samples_digest` across machines. (`samples_digest` strips that field by design.)
+真实数据的冻结报告使用输入摘要 `sha256:79e62b311240654dd7abcab577b1b27a9dcad61fcd59e2d025b023f7d253d185`；仓库候选的 manifest 使用 `sha256:e6794199c3684a1fbd1f77fcd8f7fcf9e302c9eec11dab64d37d0d4355159509`。两者的任务、实体、工具观测和 gold 相同，候选摘要差异来自来源获取时间字段的省略；报告保留运行时输入身份。
 
-## 5. Raw reports
-
-| file | sha256 (of the copy here) |
-|---|---|
-| `evals/runs/a800-baseline/qwen3-0.6b_a800_baseline.json` | `a909f5612fe04dda…` |
-| `evals/runs/a800-baseline/qwen3-0.6b_a800_probe.json` | `39f3eb6f41a6c907…` |
-| `evals/runs/a800-baseline-report.json` | `60c828b3396a08c1…` |
-| `evals/runs/real-seed7/base/report.json` | `98f86682ee932bd4…` |
-| `evals/runs/real-seed7/sft_recovery16_epoch1_lr5e-6/checkpoint/probe_manifest.json` | `d1caaf80b2b39193…` |
-| `evals/runs/real-seed7/sft_recovery16_epoch1_lr5e-6/recipe.json` | `a682e1181d8c777e…` |
-| `evals/runs/real-seed7/sft_recovery16_epoch1_lr5e-6/test_report.json` | `858c8afd6be2b0f0…` |
-| `evals/runs/real-seed7/sft_recovery16_epoch1_lr5e-6/test_samples.jsonl` | `a0590495282b05d1…` |
-| `evals/runs/real-seed7/sft_recovery16_epoch1_lr5e-6/validation_report.json` | `d1df5378b9d11314…` |
-| `evals/runs/real-seed7/split_report_sft.json` | `20ac763699ad7a50…` |
-| `evals/runs/recovery-ablation/base/report.json` | `e57fd1c7f15d9af0…` |
-| `evals/runs/recovery-ablation/sft_seed7/recipe.json` | `e8a10b20c515b748…` |
-| `evals/runs/recovery-ablation/sft_seed7/test_report.json` | `afd6cf6bbd35d669…` |
-| `evals/runs/recovery-ablation/sft_seed7/test_report_maxturns12.json` | `e5179c116412577a…` |
-| `evals/runs/recovery-ablation/sft_seed7/validation_report.json` | `a73c036dcfd01d20…` |
-| `evals/runs/recovery-ablation-seed17/sft_seed17/test_report.json` | `bd8fd474f2bb190b…` |
-| `evals/runs/recovery-ablation-seed17/sft_seed17/validation_report.json` | `f335aefc08227b53…` |
-| `evals/runs/recovery-baseline/base/report.json` | `ed72e4e044793af8…` |
-| `evals/runs/recovery-baseline/sft_seed7/recipe.json` | `e092c3415c7fa6c1…` |
-| `evals/runs/recovery-baseline/sft_seed7/validation_report.json` | `53801e5b97b419a7…` |
-
-These are the only backing for every figure in this file; nothing here is quoted
-from a summary or from memory.
-
-Each was re-hashed locally against the server's `sha256sum` **before** any number was copied
-out of it, and every number was read from those bytes. Two edits were applied to the copies
-afterwards: the lab machine's absolute path root is replaced by `<lab-root>`
-(`scripts/redact_lab_paths.py`, applied to the whole tree), and the fields that recorded when a
-run happened were dropped so the repository carries no project timeline. The hashes above are of
-the copies as they are here, which is why they are labelled as the hash of the copy rather than
-as a server checksum. The `recipe.json` entries list no absolute path and are unchanged.
-
-## 6. Limits
-
-- **Synthetic data.** All 96 samples are generated tables. This does not yet satisfy the "real data"
-  requirement. A separate **18-trace CPU smoke candidate** over published tables now exists
-  (`evals/candidates/real-smoke/`) but it is a mechanism proof with no GPU run behind it, and
-  its numbers must never be merged with the ones here.
-- **96 distinct samples**, two seeds. Enough for the paired comparison this experiment was designed
-  for; not enough to claim a stable rate. The seed spread (87.5% vs 100%) is reported, not smoothed.
-- **`disjoint_root` generalisation is unsolved** — 6/6 failures, and more turns do not help.
-- **0.6B parameters, one task family.** Nothing here generalises to GIS agents in general, and no
-  claim in this file should be quoted as if it did.
+重建候选会记录当前工具源码摘要，源码变化时 `samples_digest` 会相应变化。相同样本集合还需要核对 sample id、split 和数据摘要；归档文件的字节哈希不用于识别跨环境重建的数据。

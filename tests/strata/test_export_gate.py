@@ -3,7 +3,7 @@
 The p2c audit produced 18 candidates and marked every one `train_eligible=false`,
 but that was a hand-written field in the artifact -- a rule living in prose and
 one JSON value, with nothing that would catch a record wrongly marked true. The
-gates Codex named are mechanical, so they belong in code:
+the export requirements are checked mechanically:
 
 1. the trace carries a complete, aligned observation for every tool call;
 2. its semantics are not under review;

@@ -10,7 +10,7 @@ record already says `false` and every gate agrees is a quiet success -- which is
 the state of the first audit pass, and worth being able to confirm cheaply.
 
     python scripts/validate_export.py \
-        --candidates evals/reviews/p2c_20261004/audited_candidates.jsonl
+        --candidates path/to/audited_candidates.jsonl
     python scripts/validate_export.py --candidates ... \
         --export evals/training/eligible.jsonl --report evals/training/gate.json
 """

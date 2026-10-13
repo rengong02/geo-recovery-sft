@@ -1,24 +1,4 @@
-"""Build and gate the independent F2 recovery candidate (r2).
-
-r1's builder lived *inside* the candidate directory it produced, so the only way
-to reproduce it was to run a file that the manifest was simultaneously hashing.
-This is the same recipe at a versioned path, plus the gates r2 needs:
-
-* **three error kinds, counted.** r1 emitted one self-labelling failure. The
-  rebuilt bundle emits three realistic ones -- a wrong-but-present key from the
-  other frame, a real numeric column used as a key, and an omitted required
-  parameter -- and the counts are checked per kind *and* per split, because an
-  even global split can still be lumpy where it matters.
-* **the declared kind is derived back from the arguments.** A record that says
-  `value_as_key` while its failed call passed the geo key would train the wrong
-  lesson while every aggregate looked right. The kind is recomputed from the
-  failed call and must match.
-* **sensitive files are absent from the artifact.** Not "we remembered to
-  exclude them" -- the output directory is required to contain exactly the
-  expected artifacts and nothing else.
-
-Every check here fails closed and runs before anything is written.
-"""
+"""Build a paired recovery candidate and validate errors, splits, and replay."""
 
 from __future__ import annotations
 
@@ -42,7 +22,7 @@ EXACT_SPLIT_COUNTS = {"train": 48, "validation": 48, "test": 48}
 # comparison between them can be attributed. That makes "the same worlds" a
 # requirement to enforce, not a coincidence to tolerate.
 PAIRED_BASELINE_NAME = "recovery-baseline"
-PAIRED_BASELINE_DIR = ROOT / "evals" / "train" / PAIRED_BASELINE_NAME
+PAIRED_BASELINE_DIR = ROOT / "evals" / "candidates" / PAIRED_BASELINE_NAME
 WORLD_POLICY = "same_world_paired_ablation"
 CHANGED_FACTOR = "recovery_error_kind"
 INTENDED_USE = "paired_error_kind_ablation_candidate"

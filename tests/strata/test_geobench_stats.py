@@ -2,8 +2,7 @@
 
 P1's negative result rests on this function. If it were wrong -- too lenient, or
 mis-signed -- the conclusion "the hint has no effect" would be wrong in the
-direction that matters, so its behaviour is pinned against the exact value Codex
-computed independently from the same raw vectors.
+direction that matters, so its behaviour is pinned against an independently computed exact value from the same raw vectors.
 """
 
 from __future__ import annotations
@@ -17,7 +16,7 @@ from strata.geobench.stats import permutation_p
 def test_the_p1a_vectors_give_the_independently_computed_p():
     """The real arms, from `evals/ablation/p1a_schema_hints`.
 
-    Codex re-derived 0.4126 from these vectors; this pins the same number so a
+    An independent calculation gives 0.4126 for these vectors; this pins the same number so a
     later change to the test cannot quietly move it.
     """
     on = [2, 0, 2, 1, 0, 0, 1]

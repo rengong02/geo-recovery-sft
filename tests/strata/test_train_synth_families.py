@@ -36,7 +36,7 @@ F2_CASES = all_f2_family_cases(3)
 
 
 def test_there_is_more_than_one_composition_per_family():
-    """Re-seeding one template is not growth. Codex's ruling, made checkable."""
+    """Generator families must vary structure as well as random seed."""
     assert len(F1_COMPOSITIONS) >= 5
     assert len(F2_SHAPES) >= 3 and len(F2_COVERAGE) >= 2
 

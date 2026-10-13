@@ -1,22 +1,4 @@
-"""Build the real-data F2 recovery smoke candidate, and gate it before writing.
-
-This is the CPU smoke step of the real-data sub-line: 12-24 traces over published
-tables, enough to prove the mechanism end to end without spending a GPU.
-
-The gates here are the ones the synthetic line needed plus the ones this data
-makes necessary. Real tables bring three risks the generated ones cannot have:
-
-* **leakage between splits.** Synthetic worlds are disjoint by construction; real
-  countries are not, so the partition is checked rather than trusted -- every
-  case must draw only from its own pool, and no entity may appear in two splits.
-* **provenance that describes the wrong table.** A subset of Natural Earth is not
-  "the Natural Earth table". Every sample has to carry the source hash, the
-  licence, the pool and the exact row ids it used, and the build refuses if any
-  of those is missing.
-* **a mistake that is not a mistake.** A wrong key that merges successfully would
-  put a fabricated difficulty in the data, so each case's failed call is
-  re-executed and its kind recomputed from the arguments it actually passed.
-"""
+"""Build real-data recovery candidates with source, entity-pool, and replay checks."""
 
 from __future__ import annotations
 
@@ -33,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 ARTIFACTS = ("samples.jsonl", "build_report.json", "replay_report.json",
              "split_report.json", "manifest.json", "metadata.json", "audit.json")
 REQUIRED_PROVENANCE = ("source_id", "source_url", "source_sha256", "source_licence",
-                       "source_attribution", "source_version", "pool",
+                       "source_attribution", "pool",
                        "subset_row_ids", "canonical_key", "generator_version")
 REQUIRED_LINEAGE = ("recovery_error_kind", "entity_pool", "intended_split", "canonical_key")
 COUNT_PER_POOL = 6

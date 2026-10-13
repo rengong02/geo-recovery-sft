@@ -1,14 +1,4 @@
-"""The repository must not carry the lab machine's absolute path root.
-
-The frozen reports under `evals/train/` were produced on a shared machine, so
-they recorded that machine's paths -- including a home directory that identifies
-a person. Redacting them once is not enough: the rule was re-broken three times
-while it was being applied, twice by the very files that documented it, because
-writing the string down is the natural way to explain it.
-
-So it is a test rather than a convention. The prefix is read from the redaction
-script rather than repeated here, for the same reason.
-"""
+"""Check that source and artifact text contain no machine-local account root."""
 
 from __future__ import annotations
 

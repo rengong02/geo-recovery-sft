@@ -1,28 +1,4 @@
-"""Training data with provenance of its own, so the benchmark stays an eval set.
-
-Codex's finding: the F1/F2 samples built from the GeoBenchX catalog cannot be
-trained on, because the benchmark is what the project measures itself against.
-Anything derived from its data makes "we improved" and "we memorised" the same
-sentence. So the training tables are **generated here**, from a seeded
-generator, and the benchmark's catalog is left to do the one job it can do.
-
-How the generated tables reach the tools matters. `load_data` resolves datasets
-through GeoBenchX's own module-level `DATA_CATALOG`, so reusing it would mean
-writing into a third-party private dict -- and binding the training pipeline to
-the internals of the thing it is supposed to be independent of. Instead this
-module adds **one** tool, and leaves the other five alone: once a frame is in
-`state["data_store"]`, the rest of the toolset neither knows nor cares where it
-came from. The surface stays six tools; one of them is ours.
-
-The generated content is designed around what F1 and F2 are actually about:
-
-* columns that are **near-misses of each other** (`GDP per capita (current US$)`
-  beside `GDP (current US$)`), because a checker that only asks "does the column
-  exist" passes the wrong one;
-* join keys that **do not share a name** across the two frames, and wrong pairs
-  that match nothing -- the case where a row-count check cannot tell the pairs
-  apart at all.
-"""
+"""Generate independent task tables and execute recovery trajectories with local tabular tools."""
 
 from __future__ import annotations
 
@@ -161,19 +137,7 @@ class SyntheticLoadTool:
 
 
 def fresh_synth_tools(specs: list[SynthTableSpec], state: dict) -> dict:
-    """The synthetic workspace: one generated-table loader plus four benchmark tools.
-
-    **Five tools, not six.** The benchmark profile's six include `load_data` and
-    `load_geodata`; both read its catalog, and both are replaced here by the one
-    loader. So the synthetic surface is smaller -- which is consistent with the
-    project's own finding that a narrower surface is the lever, not a compromise.
-
-    The other four are the benchmark's own code, unchanged, on purpose:
-    re-implementing `merge_dataframes` so the training set could call itself
-    independent would mean training exercises code the evaluation never runs,
-    and the two would drift with nothing to catch it. What has to be
-    independent is the **data**, not the arithmetic.
-    """
+    """Create an isolated workspace with a generated-table loader and four local tabular tools."""
     from .slim_tools import synthetic_tabular_tools
 
     tools = synthetic_tabular_tools(state)

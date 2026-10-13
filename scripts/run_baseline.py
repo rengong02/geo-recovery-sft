@@ -18,8 +18,8 @@ Two environment facts shape the design:
 
 Greedy decoding; numeric reproducibility still depends on the execution environment.
 
-    ~/miniforge3/envs/ai/bin/python scripts/run_baseline.py \
-        --samples evals/train/samples/samples.jsonl \
+    python scripts/run_baseline.py \
+        --samples evals/candidates/real-48/samples.jsonl \
         --out evals/runs/a800-baseline-report.json
 """
 

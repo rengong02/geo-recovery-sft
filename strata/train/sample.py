@@ -1,30 +1,4 @@
-"""What a training sample is, and the checks that make it one.
-
-A sample is a **complete tool-call conversation**: a system prompt with the tool
-schemas, a user task, then alternating assistant `tool_call`s and their `tool`
-observations, ending in a structured termination. Nothing here is a "plan" --
-a plan is what the model intends, and a plan with no observation is not
-trainable, because the observation is the part that cannot be recovered later
-without inventing it.
-
-This module is deliberately the first thing built. The format is the piece that
-cannot be retrofitted: the p2c audit produced 18 records shaped like
-trajectories that had calls and no results, and no amount of downstream work
-could turn them into samples.
-
-Two properties are worth calling out because they were found the hard way:
-
-* **Refusal is by lineage, not by name.** Matching a reserved task on its id
-  string means a renamed record passes -- Codex demonstrated exactly that on the
-  earlier gate. Where the data came from does not change when you rename the
-  task, so that is what gets checked.
-* **Every blocker is reported, not just the first.** Fixing a sample one
-  refusal at a time is slower than seeing the whole list.
-
-The validator is pure: it reads a mapping and returns a verdict, and it never
-raises on malformed input, because a validator that crashes on bad data cannot
-be used to triage a batch of it.
-"""
+"""Validate complete tool-call conversations, termination schemas, and source lineage."""
 
 from __future__ import annotations
 

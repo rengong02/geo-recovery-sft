@@ -1,0 +1,6 @@
+numpy>=1.26
+pandas>=2.2
+geopandas>=1.0
+torch>=2.5,<3
+transformers>=4.51.3,<5
+safetensors>=0.5

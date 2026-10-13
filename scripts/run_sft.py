@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Run a small dependency-free supervised fine-tuning probe.
-
-This is intentionally not the project training pipeline. It verifies that the
-checkpoint, chat template, assistant-only labels, CUDA backward pass, and
-checkpoint save path work before a longer SFT implementation is introduced.
-"""
+"""Run full-parameter supervised fine-tuning on validated tool-call trajectories."""
 
 from __future__ import annotations
 

@@ -65,7 +65,7 @@ def test_the_marker_is_provenance_and_not_prompt_text():
     assert "recovery_error_kind" not in json.dumps(sample["messages"])
 
 
-# --- the two bounds Codex found missing ---------------------------------------
+# --- recovery allowance bounds ----------------------------------------------
 
 
 def test_a_forged_marker_is_not_a_licence():

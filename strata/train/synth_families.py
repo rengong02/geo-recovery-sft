@@ -1,10 +1,7 @@
 """Generator families beyond the first three schema styles.
 
-Codex's ruling: growing the set by re-seeding the same three templates is not
-growth. A model that has seen `Country Name` / `NAME_EN` / `Economy` as three
-spellings of one idea has seen one composition; a fourth spelling adds a row,
-not a case. What generalises is the *shape* of the problem, so each family here
-differs in what makes the answer hard:
+Generator families vary problem structure as well as random seeds and column
+names. Each family exercises a different ambiguity:
 
 | family | what is hard about it |
 |---|---|

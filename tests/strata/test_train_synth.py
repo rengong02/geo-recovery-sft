@@ -285,7 +285,7 @@ def test_naming_family_gold_column_matches_each_convention():
 
 
 def test_a_benchmark_record_still_needs_the_whole_benchmark_surface():
-    """The guard Codex put there is kept: a surface drawn from the benchmark's
+    """A surface drawn from the benchmark's
     six must be all six, not a convenient subset."""
     partial = {"tools": [{"type": "function", "function": {
         "name": "get_unique_values",
